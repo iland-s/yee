@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>都是同龄人我原本没想降维打击</title>
+<style>
+h1 {
+  width: fit-content;
+  margin: 80px auto 0;
+  padding: 12px 28px;
+  background: #d9d9d9;
+  border-radius: 12px;
+
+  text-align: center;
+  font-size: 64px;
+  color: red;
+}
+p {
+  width: fit-content;
+  margin: 10px auto;
+  padding: 8px 18px;
+  background: #b39ddb;
+  color: #20122e;
+  border-radius: 10px;
+
+  text-align: center;
+  font-size: 24px;
+}
+ .photo {
+      display: block;
+      margin: 20px auto;
+      width: 320px;
+      max-width: 90%;
+      height: auto;
+      border-radius: 16px;
+    }
+.music-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #7e57c2;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.music-btn:hover {
+  background: #9b7bd4;
+}
+</style>
+
+</head>
+<body>
+    <h1>孙宏宇驾到</h1>
+    <p>苏州市最终兵器</p>
+    <p>女人中的女人</p>
+     <img src="meizhao.jpg" alt="我们的照片" class="photo">
+     <p>万千少女的梦</p>
+     <p>尖叫不要停</p>
+    
+<audio id="bgm" src="music.mp3" loop preload="auto"></audio>
+
+<button id="musicBtn" class="music-btn">♫ 播放音乐</button>
+<script>
+  const bgm = document.getElementById("bgm");
+  const musicBtn = document.getElementById("musicBtn");
+  let playing = false;
+
+  musicBtn.addEventListener("click", async () => {
+    if (playing) {
+      bgm.pause();
+      musicBtn.textContent = "♫ 播放音乐";
+    } else {
+      try {
+        await bgm.play();
+        musicBtn.textContent = "❚❚ 暂停音乐";
+      } catch (error) {
+        console.log("播放失败：", error);
+      }
+    }
+    playing = !playing;
+  });
+</script>
+  </body>
+</html>
